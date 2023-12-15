@@ -1,25 +1,25 @@
-import { Form } from './Form/Form';
-import { Filter } from './Filter/Filter';
-import { ContactList } from './ContactList/ContactList';
 import { Container } from './App.styled';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useSelector } from 'react-redux';
-import { selectIsLoading } from 'redux/selectors/selectors';
-import { Loader } from './Loader/Loader';
+import { lazy } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import HomePage from 'pages/HomePage';
 
 export const App = () => {
-  const loading = useSelector(selectIsLoading);
+  const Contacts = lazy(() => import('../pages/ContactsPage'));
+  const Register = lazy(() => import('../pages/RegisterPage'));
+  const Login = lazy(() => import('../pages/LoginPage'));
+
   return (
     <Container>
-      <h1>Phonebook</h1>
-      <Form />
-
-      <h2>Contacts</h2>
-      <Filter />
-      {loading && <Loader />}
-      <ContactList />
-      <ToastContainer autoClose={2000} />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/contacts" element={<Contacts />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
+      ;
+      <ToastContainer autoClose={3000} />
     </Container>
   );
 };
