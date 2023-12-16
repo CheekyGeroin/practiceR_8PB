@@ -18,7 +18,6 @@ export const App = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
       </Routes>
-      ;
       <ToastContainer autoClose={3000} />
     </Container>
   );
