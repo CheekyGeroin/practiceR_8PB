@@ -1,7 +1,7 @@
 import { Wrapper, LoaderText } from './Loader.styled';
 import { InfinitySpin } from 'react-loader-spinner';
 
-export const Loader = () => {
+const Loader = () => {
   return (
     <Wrapper>
       <InfinitySpin width="100" color="#000" />
@@ -9,3 +9,5 @@ export const Loader = () => {
     </Wrapper>
   );
 };
+
+export default Loader;
