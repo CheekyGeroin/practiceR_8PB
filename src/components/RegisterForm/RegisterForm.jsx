@@ -18,7 +18,7 @@ const RegisterForm = () => {
 
   const submitForm = e => {
     e.preventDefault();
-    dispatch(signUpUser(name, email, password));
+    dispatch(signUpUser({ name, email, password }));
     reset();
   };
   const handleChange = e => {

@@ -19,12 +19,17 @@ const token = {
 
 export const signUpUser = createAsyncThunk(
   'user/signup',
-  async ({ name, email, password }, { rejectWithValue }) => {
+  async (data, { rejectWithValue }) => {
     try {
-      const newUser = await signupNewUser(name, email, password);
-      token.set(newUser.token);
-      toast.success(`New user with name ${name} has created!`);
-      return newUser;
+      const newUser = {
+        name: data.name,
+        email: data.email,
+        password: data.password,
+      };
+      const response = await signupNewUser(newUser);
+      token.set(response.token);
+      toast.success(`New user with name ${data.name} has created!`);
+      return response;
     } catch (error) {
       toast.error(`Something went wrong`);
       return rejectWithValue(error);
@@ -34,12 +39,13 @@ export const signUpUser = createAsyncThunk(
 
 export const loginUser = createAsyncThunk(
   'user/login',
-  async ({ email, password }, { rejectWithValue }) => {
+  async (data, { rejectWithValue }) => {
     try {
-      const user = await logInUser(email, password);
-      token.set(user.token);
+      const user = { email: data.email, password: data.password };
+      const response = await logInUser(user);
+      token.set(response.token);
       toast.success(`Hello!:)`);
-      return user;
+      return response;
     } catch (error) {
       toast.error(`Something went wrong`);
       return rejectWithValue(error);

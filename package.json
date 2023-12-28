@@ -2,7 +2,7 @@
   "name": "react-homework-template",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://CheekyGeroin.github.io/practice_8PB/",
+  "homepage": "https://CheekyGeroin.github.io/practiceR_8PB/",
   "dependencies": {
     "@emotion/styled": "^11.11.0",
     "@reduxjs/toolkit": "^1.9.7",

@@ -13,7 +13,7 @@ import Loader from './Loader/Loader';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import PublicRoute from './PublicRoute/PublicRoute';
 
-export const App = () => {
+const App = () => {
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectIsRefreshing);
 
@@ -53,3 +53,5 @@ export const App = () => {
     )
   );
 };
+
+export default App;

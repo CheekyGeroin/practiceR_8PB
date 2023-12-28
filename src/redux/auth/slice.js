@@ -17,43 +17,43 @@ const authSlice = createSlice({
   },
 
   extraReducers: {
-    [signUpUser.fulfilled]: (state, { payload }) => {
+    [signUpUser.fulfilled]: (state, action) => {
       return {
         ...state,
         user: {
           ...state.user,
-          name: payload.user.name,
-          email: payload.user.email,
+          name: action.payload.user.name,
+          email: action.payload.user.email,
         },
-        token: payload.user.token,
+        token: action.payload.user.token,
         isLoggedIn: true,
       };
     },
 
-    [signUpUser.rejected]: (state, { payload }) => {
+    [signUpUser.rejected]: (state, action) => {
       return {
         ...state,
-        error: payload.name,
+        error: action.payload.name,
       };
     },
 
-    [loginUser.fulfilled]: (state, { payload }) => {
+    [loginUser.fulfilled]: (state, action) => {
       return {
         ...state,
         user: {
           ...state.user,
-          name: payload.user.name,
-          email: payload.user.email,
+          name: action.payload.user.name,
+          email: action.payload.user.email,
         },
-        token: payload.user.token,
+        token: action.payload.user.token,
         isLoggedIn: true,
       };
     },
 
-    [loginUser.rejected]: (state, { payload }) => {
+    [loginUser.rejected]: (state, action) => {
       return {
         ...state,
-        error: payload.name,
+        error: action.payload.name,
       };
     },
 
@@ -64,25 +64,25 @@ const authSlice = createSlice({
       };
     },
 
-    [refreshUser.fulfilled]: (state, { payload }) => {
+    [refreshUser.fulfilled]: (state, action) => {
       return {
         ...state,
         user: {
           ...state.user,
-          name: payload.user.name,
-          email: payload.user.name,
+          name: action.payload.user.name,
+          email: action.payload.user.name,
         },
-        token: payload.user.token,
+        token: action.payload.user.token,
         isRefreshing: false,
         isLoggedIn: true,
       };
     },
 
-    [refreshUser.rejected]: (state, { payload }) => {
+    [refreshUser.rejected]: (state, action) => {
       return {
         ...state,
         isRefreshing: false,
-        error: payload.name,
+        error: action.payload.name,
       };
     },
 
@@ -98,10 +98,10 @@ const authSlice = createSlice({
         isLoggedIn: false,
       };
     },
-    [logoutUser.rejected]: (state, { payload }) => {
+    [logoutUser.rejected]: (state, action) => {
       return {
         ...state,
-        error: payload.name,
+        error: action.payload.name,
       };
     },
   },

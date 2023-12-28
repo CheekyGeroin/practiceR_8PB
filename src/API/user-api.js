@@ -2,15 +2,13 @@ import axios from 'axios';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
-export const signupNewUser = async ({ name, password, email }) => {
-  const newUser = { name, email, password };
-  const { data } = await axios.post('/users/signup', newUser);
+export const signupNewUser = async credentials => {
+  const { data } = await axios.post('/users/signup', credentials);
   return data;
 };
 
-export const logInUser = async ({ email, password }) => {
-  const user = { email, password };
-  const { data } = await axios.post('/users/login', user);
+export const logInUser = async credentials => {
+  const { data } = await axios.post('/users/login', credentials);
   return data;
 };
 

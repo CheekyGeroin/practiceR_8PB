@@ -30,7 +30,7 @@ const LoginForm = () => {
   };
   const submitForm = e => {
     e.preventDefault();
-    dispatch(loginUser(email, password));
+    dispatch(loginUser({ email, password }));
     reset();
   };
 
